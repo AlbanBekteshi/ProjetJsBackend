@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var User = require("../model/User.js");
+var Items = require("../model/Items");
+
 let { authorize, signAsynchronous } = require("../utils/auth");
 const jwt = require("jsonwebtoken");
 const jwtSecret = "jkjJ1235Ohno!";
@@ -10,6 +12,7 @@ const LIFETIME_JWT = 24 * 60 * 60 * 1000 ; // 10;// in seconds // 24 * 60 * 60 *
 router.get("/", authorize, function (req, res, next) {
     return res.json(User.list);
 });
+
 
 /* POST user data for authentication */
 router.post("/login", function (req, res, next) {
@@ -58,6 +61,25 @@ router.get("/:username", function (req, res, next) {
   const userFound = User.getUserFromList(req.params.username);
   if (userFound) {
     return res.json(userFound);
+  } else {
+    return res.status(404).send("ressource not found");
+  }
+});
+
+/**
+ * Get items collection from userId
+ * Si fetch() GET /api/users/1 + authorization header contenant le token (token.userId)
+ */
+router.get("/:userId", authorize, function (req, res, next) {
+  console.log("GET users/:userId", req.params.userId);
+  const idUser = req.params.userId;
+  const itemCollectionId = Items.getItemsCollectionIdListForUser(idUser);
+  const itemCollectionListForThisUser = [];
+  for(let index = 0; index < itemCollectionId.length; index++){
+    itemCollectionListForThisUser.push(Items.getItemsById(itemCollectionId[index]));
+  }
+  if (itemCollectionListForThisUser) {
+    return res.json(itemCollectionListForThisUser);
   } else {
     return res.status(404).send("ressource not found");
   }

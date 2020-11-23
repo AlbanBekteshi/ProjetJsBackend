@@ -1,6 +1,6 @@
 "strict mode";
 
-//const ITEMS_FILE_PATH = __dirname + "./Data/items.json";
+const ITEMS_FILE_PATH = __dirname + "./Data/items.json";
 const USERS_FILE_PATH = __dirname + "./Data/users.json";
 
 class Items {
@@ -9,29 +9,31 @@ class Items {
         this.userId = userId;
     }
 
-    /**
-     * if user is current user then return his itemCollection
-     * @param userId
-     * @returns itemsCollection for current user
-     */
-    static isUserCollection(userId) {
-        let itemsCollection = this.getItemsCollectionFromUsersList(userId);
-        return itemsCollection;
-    }
 
     /**
      *
      * @param userId
      * @returns items Collection array for this user.
      */
-    static getItemsCollectionFromUsersList(userId) {
+    static getItemsCollectionIdListForUser(userId) {
         const userList = getUsersList(USERS_FILE_PATH);
         for (let userIndex = 0; userIndex < userList.length; userIndex++) {
             if (userList[userIndex].idUser = userId) {
                 return userList[userIndex].itemCollections;
                 break;
             }
-            return;
+            return undefined;
+        }
+    }
+
+    static getItemsById(idItem) {
+        const itemList = getItemById(ITEMS_FILE_PATH);
+        for (let itemIndex = 0; itemIndex < itemList.length; itemIndex++) {
+            if (itemList[itemIndex].itemId = idItem) {
+                return itemList[itemIndex];
+                break;
+            }
+            return undefined;
         }
     }
 }
@@ -48,3 +50,15 @@ function getUsersList(filePath) {
     else usersList = [];
     return usersList;
 }
+
+function getItemById(filePath) {
+    const fs = require("fs");
+    if (!fs.existsSync(filePath)) return [];
+    let itemListRawData = fs.readFileSync(filePath);
+    let itemList;
+    if (itemList) itemList = JSON.parse(itemListRawData);
+    else itemList = [];
+    return itemList;
+}
+
+module.exports = Items;

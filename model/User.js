@@ -82,8 +82,14 @@ class User {
     return userList;
   }
 
-  static isUser(username) {
+  static isUsername(username) {
     const userFound = User.getUserFromList(username);
+    console.log("User::isUser:", userFound);
+    return userFound !== undefined;
+  }
+
+  static isUserEmail(email){
+    const userFound = User.getUserFromListMail(email);
     console.log("User::isUser:", userFound);
     return userFound !== undefined;
   }
@@ -92,6 +98,14 @@ class User {
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {
       if (userList[index].username === username) return userList[index];
+    }
+    return;
+  }
+
+  static getUserFromListMail(email) {
+    const userList = getUserListFromFile(FILE_PATH);
+    for (let index = 0; index < userList.length; index++) {
+      if (userList[index].email === email) return userList[index];
     }
     return;
   }

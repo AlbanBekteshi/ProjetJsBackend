@@ -6,14 +6,15 @@ const FILE_PATH = __dirname + "/users.json";
 //const NEW_FILE_PATH = __dirname + "../Data/users.json";
 
 class User {
-  constructor(username, email, password) {
+  constructor(username, email, password, fName, lName) {
     this.idUser = getUserListFromFile(FILE_PATH).length+1;
     this.username = username;
     this.email = email;
     this.password = password;
-    this.fName = null;
-    this.lName = null;
+    this.fName = fName;
+    this.lName = lName;
     this.avatar = null;
+    this.type = null;
     this.itemCollections = [];
   }
 

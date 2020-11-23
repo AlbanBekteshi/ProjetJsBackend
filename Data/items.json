@@ -1,0 +1,37 @@
+[
+  {
+    "itemId": 1,
+    "jeu": "CSGO",
+    "name": "Butterfly Knife",
+    "description": "Knife",
+    "price": 1337
+  },
+  {
+    "itemId": 2,
+    "jeu": "CSGO",
+    "name": "Lion Knife",
+    "description": "Knife",
+    "price": 1338
+  },
+  {
+    "itemId": 3,
+    "jeu": "Fortnite",
+    "name": "Tiger Knife",
+    "description": "Knife",
+    "price": 1338
+  },
+  {
+    "itemId": 4,
+    "jeu": "Infinity",
+    "name": "Powerful Knife",
+    "description": "Knife",
+    "price": 1338
+  },
+  {
+    "itemId": 5,
+    "jeu": "Infinity",
+    "name": "Assasin Knife",
+    "description": "Knife",
+    "price": 1338
+  }
+]

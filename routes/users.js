@@ -41,6 +41,8 @@ router.post("/", function (req, res, next) {
   console.log("email:", req.body.email);
   if (User.isUser(req.body.email))
     return res.status(409).end();
+  if (User.isUser(req.body.username))
+    return res.status(409).end();
   let newUser = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName);
   console.log("newUser.idUser "+newUser.idUser);
   newUser.save().then(() => {

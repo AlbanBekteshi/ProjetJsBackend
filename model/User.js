@@ -14,7 +14,7 @@ class User {
     this.fName = fName;
     this.lName = lName;
     this.avatar = null;
-    this.type = null;
+    this.type = "users";
     this.itemCollections = [];
   }
 
@@ -39,9 +39,9 @@ class User {
   }
 
   /* return a promise with classic promise syntax*/
-  checkCredentials(email, password) {
-    if (!email || !password) return false;
-    let userFound = User.getUserFromList(email);
+  checkCredentials(username, password) {
+    if (!username || !password) return false;
+    let userFound = User.getUserFromList(username);
     console.log("User::checkCredentials:", userFound, " password:", password);
     if (!userFound) return Promise.resolve(false);
     //try {

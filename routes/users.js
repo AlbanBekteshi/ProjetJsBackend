@@ -16,11 +16,11 @@ router.get("/", authorize, function (req, res, next) {
 
 /* POST user data for authentication */
 router.post("/login", function (req, res, next) {
-  let user = new User(req.body.email, req.body.email, req.body.password);
+  let user = new User(req.body.username, req.body.password);
   console.log("POST users/login:", User.list);
-  user.checkCredentials(req.body.email, req.body.password).then((match) => {
+  user.checkCredentials(req.body.username, req.body.password).then((match) => {
     if (match) {
-      jwt.sign({ idUser:newUser.idUser, username: user.username }, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
+      jwt.sign({ idUser:user.idUser, username: user.username }, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
         if (err) {
           console.error("POST users/ :", err);
           return res.status(500).send(err.message);
@@ -30,7 +30,7 @@ router.post("/login", function (req, res, next) {
       });
     } else {
       console.log("POST users/login Error:", "Unauthentified");
-      return res.status(401).send("bad email/password");
+      return res.status(401).send("bad username/password");
     }
   })  
 });

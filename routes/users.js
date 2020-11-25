@@ -41,22 +41,32 @@ router.post("/", function (req, res, next) {
   console.log("email:", req.body.email);
   if (User.isUsername(req.body.username))
     return res.status(410).end();
-  if (User.isUserEmail(req.body.email))
+  if (User.isUserEmail(req.body.email)){
     return res.status(409).end();
-  const usersList = User.list();
+  }
+  
+  const usersList = User.list;
+  
   let usersListLength = usersList.length;
   let userFound = false;
+  let user;
+  
   for(let index = 0; index< usersListLength; index++){
+    
     if(usersList[index].username == req.body.username){
-      let user = new User(usersList[index].username, usersList[index].email, usersList[index].password, usersList[index].fName, usersList[index].lName, usersList[index].idUser);
+      user= new User(usersList[index].username, usersList[index].email, usersList[index].password, usersList[index].fName, usersList[index].lName, usersList[index].idUser);
       userFound = true;
       break;
     }
-
   }
-  if(userFound){
-    let user = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName, usersListLength+1);
+  
+  console.log(userFound)
+  if(!userFound){
+    user = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName, usersList[usersListLength-1].idUser+1);
+    console.log(user);
   }
+  
+  
   user.save().then(() => {
     console.log("afterRegisterOp:", User.list);
     jwt.sign({ idUser:user.idUser, username: user.username}, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {

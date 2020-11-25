@@ -2,12 +2,14 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const myPlaintextPassword = "145OkyayNo668Pass";
-const FILE_PATH = __dirname + "/users.json";
-//const NEW_FILE_PATH = __dirname + "../Data/users.json";
+//const FILE_PATH = __dirname + "/users.json";
+const FILE_PATH = __dirname + "../data/users.json";
 
 class User {
-  constructor(username, email, password, fName, lName) {
-    this.idUser = getUserListFromFile(FILE_PATH).length+1;
+  constructor(username, email, password, fName, lName, idUser) {
+    //TODO modifié et gérer l'utilisateur NOUVEAU et Existant
+    this.idUser = idUser;
+    //this.idUser = getUserListFromFile(FILE_PATH).length+1;
     this.username = username;
     this.email = email;
     this.password = password;

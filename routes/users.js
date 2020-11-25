@@ -43,18 +43,30 @@ router.post("/", function (req, res, next) {
     return res.status(410).end();
   if (User.isUserEmail(req.body.email))
     return res.status(409).end();
-  let newUser = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName);
-  console.log("newUser.idUser "+newUser.idUser);
-  newUser.save().then(() => {
+  const usersList = User.list();
+  let usersListLength = usersList.length;
+  let userFound = false;
+  for(let index = 0; index< usersListLength; index++){
+    if(usersList[index].username == req.body.username){
+      let user = new User(usersList[index].username, usersList[index].email, usersList[index].password, usersList[index].fName, usersList[index].lName, usersList[index].idUser);
+      userFound = true;
+      break;
+    }
+
+  }
+  if(userFound){
+    let user = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName, usersListLength+1);
+  }
+  user.save().then(() => {
     console.log("afterRegisterOp:", User.list);
-    jwt.sign({ idUser:newUser.idUser, username: newUser.username}, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
+    jwt.sign({ idUser:user.idUser, username: user.username}, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
       console.log("token: "+token);
       if (err) {
         console.error("POST users/ :", err);
         return res.status(500).send(err.message);
       }
       console.log("POST users/ token:", token);
-      return res.json({ username: newUser.username, token });
+      return res.json({ username: user.username, token });
     });
   });
 });

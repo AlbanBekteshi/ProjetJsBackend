@@ -1,7 +1,7 @@
 "strict mode";
 
-const ITEMS_FILE_PATH = __dirname + "./Data/items.json";
-const USERS_FILE_PATH = __dirname + "./Data/users.json";
+const ITEMS_FILE_PATH = __dirname + "./data/items.json";
+const USERS_FILE_PATH = __dirname + "./data/users.json";
 
 class Items {
 

@@ -104,6 +104,14 @@ class User {
     return;
   }
 
+  static getUserId(username){
+    const userList = getUserListFromFile(FILE_PATH);
+    for (let index = 0; index < userList.length; index++) {
+      if (userList[index].username === username) return userList[index].idUser;
+    }
+    return -1;
+  }
+
   static getUserFromListMail(email) {
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {

@@ -4,7 +4,7 @@
     "jeu": "CSGO",
     "name": "Butterfly Knife",
     "description": "Knife",
-    "image": null,
+    "image": "empty",
     "price": 1337
   },
   {
@@ -12,7 +12,7 @@
     "jeu": "CSGO",
     "name": "Lion Knife",
     "description": "Knife",
-    "image": null,
+    "image": "empty",
     "price": 1338
   },
   {
@@ -20,7 +20,7 @@
     "jeu": "Fortnite",
     "name": "Tiger Knife",
     "description": "Knife",
-    "image":null,
+    "image":"empty",
     "price": 1338
   },
   {
@@ -28,7 +28,7 @@
     "jeu": "Infinity",
     "name": "Powerful Knife",
     "description": "Knife",
-    "image":null,
+    "image":"empty",
     "price": 1338
   },
   {
@@ -36,7 +36,7 @@
     "jeu": "Infinity",
     "name": "Assasin Knife",
     "description": "Knife",
-    "image":null,
+    "image":"empty",
     "price": 1338
   }
 ]

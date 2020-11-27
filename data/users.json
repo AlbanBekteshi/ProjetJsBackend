@@ -31,5 +31,27 @@
     "avatar": null,
     "type": "users",
     "itemCollections": []
+  },
+  {
+    "idUser": 6,
+    "username": "erkut",
+    "email": "erkut.koc@student.vinci.be",
+    "password": "$2b$10$pSHIPuBOZ1hiaELDEEgg8eUCKQKLnwtOk5Mxm91E1L/QkAMNHsd4i",
+    "fName": "erkut",
+    "lName": "koc",
+    "avatar": null,
+    "type": "users",
+    "itemCollections": []
+  },
+  {
+    "idUser": 7,
+    "username": "erku",
+    "email": "erkut.koec@student.vinci.be",
+    "password": "$2b$10$W2BHbgDM/iW5QDIvRt.aluErNyo.gC2kKdErLg5zaBnFa8DoPiRHS",
+    "fName": "erkut",
+    "lName": "koc",
+    "avatar": null,
+    "type": "users",
+    "itemCollections": []
   }
 ]

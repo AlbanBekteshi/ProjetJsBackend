@@ -2,19 +2,21 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const myPlaintextPassword = "145OkyayNo668Pass";
-const FILE_PATH = __dirname + "/users.json";
-//const NEW_FILE_PATH = __dirname + "../Data/users.json";
+//const FILE_PATH = __dirname + "/users.json";
+const FILE_PATH = __dirname + "./../data/users.json";
 
 class User {
-  constructor(username, email, password, fName, lName) {
-    this.idUser = getUserListFromFile(FILE_PATH).length+1;
+  constructor(username, email, password, fName, lName, idUser) {
+    //TODO modifié et gérer l'utilisateur NOUVEAU et Existant
+    this.idUser = idUser;
+    //this.idUser = getUserListFromFile(FILE_PATH).length+1;
     this.username = username;
     this.email = email;
     this.password = password;
     this.fName = fName;
     this.lName = lName;
     this.avatar = null;
-    this.type = null;
+    this.type = "users";
     this.itemCollections = [];
   }
 
@@ -39,9 +41,9 @@ class User {
   }
 
   /* return a promise with classic promise syntax*/
-  checkCredentials(email, password) {
-    if (!email || !password) return false;
-    let userFound = User.getUserFromList(email);
+  checkCredentials(username, password) {
+    if (!username || !password) return false;
+    let userFound = User.getUserFromList(username);
     console.log("User::checkCredentials:", userFound, " password:", password);
     if (!userFound) return Promise.resolve(false);
     //try {
@@ -100,6 +102,14 @@ class User {
       if (userList[index].username === username) return userList[index];
     }
     return;
+  }
+
+  static getUserId(username){
+    const userList = getUserListFromFile(FILE_PATH);
+    for (let index = 0; index < userList.length; index++) {
+      if (userList[index].username === username) return userList[index].idUser;
+    }
+    return -1;
   }
 
   static getUserFromListMail(email) {

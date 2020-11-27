@@ -1,0 +1,35 @@
+[
+  {
+    "idUser": 2,
+    "username": "postgres",
+    "email": "adriendedecker@yahoo.fr",
+    "password": "$2b$10$YRH7nTD8qKZtnjNJ.VWk6eUEavOT5lRO4RUbl8bVe5BW37Nkix8wW",
+    "fName": "Adrien",
+    "lName": "de Decker",
+    "avatar": null,
+    "type": "users",
+    "itemCollections": []
+  },
+  {
+    "idUser": 4,
+    "username": "r00t219",
+    "email": "adrien.dedecker@student.vinci.be",
+    "password": "$2b$10$ljwc0EfzpeUnZ.xtj97jkOBgJaBLm3JGuQ6F1fL2QBkjWmAs9OZ8C",
+    "fName": "Adrien",
+    "lName": "de Decker",
+    "avatar": null,
+    "type": "users",
+    "itemCollections": []
+  },
+  {
+    "idUser": 5,
+    "username": "adrien",
+    "email": "adrien.dedecker@student.vin",
+    "password": "$2b$10$gBTFIK4NFUPqP5mF1tzE.uqBcY9Nuv.2aJhKdS/QJ9SraJlHNHVze",
+    "fName": "Adrien",
+    "lName": "de Decker",
+    "avatar": null,
+    "type": "users",
+    "itemCollections": []
+  }
+]

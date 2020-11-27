@@ -27,11 +27,11 @@ const LIFETIME_JWT = 24 * 60 * 60 * 1000; // in seconds : 24 * 60 * 60 * 1000 = 
  * @param {*} param0
  * @param {*} callback
  */
-const signAsynchronous = ({ username }, onSigningDoneCallback) => {
+const signAsynchronous = ({ idUser, username }, onSigningDoneCallback) => {
   const exp = Date.now() + LIFETIME_JWT;
   console.log("sign():", { username }, username, { ...username });
   jwt.sign(
-    { username },
+    { idUser, username },
     jwtSecret,
     { expiresIn: LIFETIME_JWT },
     (err, token) => {

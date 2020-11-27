@@ -16,45 +16,64 @@ router.get("/", authorize, function (req, res, next) {
 
 /* POST user data for authentication */
 router.post("/login", function (req, res, next) {
-  let user = new User(req.body.email, req.body.email, req.body.password);
-  console.log("POST users/login:", User.list);
-  user.checkCredentials(req.body.email, req.body.password).then((match) => {
-    if (match) {
-      jwt.sign({ idUser:newUser.idUser, username: user.username }, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
-        if (err) {
-          console.error("POST users/ :", err);
-          return res.status(500).send(err.message);
-        }
-        console.log("POST users/ token:", token);
-        return res.json({ username: user.username, token });
-      });
-    } else {
-      console.log("POST users/login Error:", "Unauthentified");
-      return res.status(401).send("bad email/password");
-    }
-  })  
+  let idUser = User.getUserId(req.body.username);
+  if(idUser!=-1){
+    let user = new User(req.body.username, req.body.password);
+    user.checkCredentials(req.body.username, req.body.password).then((match) => {
+      if (match) {
+        jwt.sign( { idUser:idUser, username: user.username }, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
+          if (err) {
+            return res.status(500).send(err.message);
+          }
+          console.log("POST users/ token:", token);
+          return res.json({ idUser:idUser,username: user.username, token });
+        });
+      } else {
+        return res.status(401).send("bad username/password");
+      }
+    }) 
+  }
 });
 
 /* POST a new user */
 router.post("/", function (req, res, next) {
-  console.log("POST users/", User.list);
-  console.log("email:", req.body.email);
   if (User.isUsername(req.body.username))
     return res.status(410).end();
-  if (User.isUserEmail(req.body.email))
+  if (User.isUserEmail(req.body.email)){
     return res.status(409).end();
-  let newUser = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName);
-  console.log("newUser.idUser "+newUser.idUser);
-  newUser.save().then(() => {
-    console.log("afterRegisterOp:", User.list);
-    jwt.sign({ idUser:newUser.idUser, username: newUser.username}, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
-      console.log("token: "+token);
+  }
+  
+  const usersList = User.list;
+  
+  let usersListLength = usersList.length;
+  let userFound = false;
+  let user;
+  
+  for(let index = 0; index< usersListLength; index++){
+    
+    if(usersList[index].username == req.body.username){
+      user= new User(usersList[index].username, usersList[index].email, usersList[index].password, usersList[index].fName, usersList[index].lName, usersList[index].idUser);
+      userFound = true;
+      break;
+    }
+  }
+  
+  console.log(userFound)
+  if(!userFound){
+    user = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName, usersList[usersListLength-1].idUser+1);
+  
+  }
+  
+  
+  user.save().then(() => {
+    jwt.sign({ idUser:user.idUser, username: user.username}, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
       if (err) {
         console.error("POST users/ :", err);
         return res.status(500).send(err.message);
       }
       console.log("POST users/ token:", token);
-      return res.json({ username: newUser.username, token });
+      
+      return res.json({idUser:user.idUser,username: user.username, token });
     });
   });
 });

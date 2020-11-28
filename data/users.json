@@ -8,7 +8,7 @@
     "lName": "de Decker",
     "avatar": null,
     "type": "users",
-    "itemCollections": []
+    "itemCollections": [1,3]
   },
   {
     "idUser": 4,
@@ -19,7 +19,7 @@
     "lName": "de Decker",
     "avatar": null,
     "type": "users",
-    "itemCollections": []
+    "itemCollections": [1,2,3,4,5]
   },
   {
     "idUser": 5,
@@ -30,7 +30,7 @@
     "lName": "de Decker",
     "avatar": null,
     "type": "users",
-    "itemCollections": []
+    "itemCollections": [1,5]
   },
   {
     "idUser": 6,
@@ -41,7 +41,7 @@
     "lName": "koc",
     "avatar": null,
     "type": "users",
-    "itemCollections": []
+    "itemCollections": [1,4]
   },
   {
     "idUser": 7,

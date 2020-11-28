@@ -28,9 +28,9 @@ class Items {
     }
     /**
      * this function is used if the user not authentificated.
-     * @returns allItems {[]}
+     * @returns allItems photo{[]}
      */
-    static getAllItemsCollection() {
+    static getAllItemsPhotoCollection() {
         const itemList = getAllItemsList(ITEMS_FILE_PATH);
         let imageList = [];
         for (let itemIndex = 0; itemIndex < itemList.length; itemIndex++) {
@@ -38,7 +38,18 @@ class Items {
         }
         return imageList;
     }
-
+    /**
+     * this function is used if the user not authentificated.
+     * @returns allItems {[]}
+     */
+    static getAllItemsCollection() {
+        const itemList = getAllItemsList(ITEMS_FILE_PATH);
+        let imageList = [];
+        for (let itemIndex = 0; itemIndex < itemList.length; itemIndex++) {
+            imageList.push(itemList[itemIndex]);
+        }
+        return imageList;
+    }
 
     /**
      *

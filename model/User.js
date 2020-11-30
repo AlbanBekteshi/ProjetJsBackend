@@ -98,9 +98,9 @@ class User {
   static getUserFromListById(userID) {
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {
-      if (userList[index].userId === userID) return userList[index];
+      if (userList[index].idUser == userID) return userList[index];
     }
-    return;
+    return undefined;
   }
 
   static getUserFromList(username) {

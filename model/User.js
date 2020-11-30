@@ -95,6 +95,13 @@ class User {
     console.log("User::isUser:", userFound);
     return userFound !== undefined;
   }
+  static getUserFromListById(userID) {
+    const userList = getUserListFromFile(FILE_PATH);
+    for (let index = 0; index < userList.length; index++) {
+      if (userList[index].userId === userID) return userList[index];
+    }
+    return;
+  }
 
   static getUserFromList(username) {
     const userList = getUserListFromFile(FILE_PATH);

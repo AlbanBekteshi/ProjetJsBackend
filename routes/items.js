@@ -10,6 +10,7 @@ router.get("/", function (req, res, next) {
     const items = Items.getAllItemsCollection();
     return res.json(items);
 });
+
 /**
  * Get items collection from userId
  * Si fetch() GET /api/users/1 + authorization header contenant le token (token.userId)

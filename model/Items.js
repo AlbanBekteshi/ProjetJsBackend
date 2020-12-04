@@ -107,7 +107,7 @@ function getAllItemsList(filePath) {
     if (!fs.existsSync(filePath)) return [];
     let itemListRawData = fs.readFileSync(filePath);
     let itemList;
-    if (itemList) itemList = JSON.parse(itemListRawData);
+    if (itemListRawData) itemList = JSON.parse(itemListRawData);
     else itemList = [];
     return itemList;
 }

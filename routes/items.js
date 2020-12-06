@@ -15,6 +15,7 @@ router.get("/", function (req, res, next) {
  * Get items collection from userId
  * Si fetch() GET /api/users/1 + authorization header contenant le token (token.userId)
  */
+/*
 router.get("/:userId", authorize, function (req, res, next) {
     console.log("GET items/:userId", req.params.userId);
     const idUser = req.params.userId;
@@ -29,6 +30,15 @@ router.get("/:userId", authorize, function (req, res, next) {
         return res.status(404).send("ressource not found");
     }
 });
+*/
 
+/**
+ * Get item from itemId
+ */
+router.get("/:itemId", function (req,res,next){
+    console.log("/api/items/:itemId " + req.params.itemId);
+    console.log(Items.getItemsById(req.params.itemId));
+    return res.json(Items.getItemsById(req.params.itemId));
+});
 
 module.exports = router;

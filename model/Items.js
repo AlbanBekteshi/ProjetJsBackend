@@ -68,14 +68,14 @@ class Items {
     }
 
     static getItemsById(idItem) {
-        const itemList = getItemById(ITEMS_FILE_PATH);
+        const itemList = getAllItemsList(ITEMS_FILE_PATH);
         for (let itemIndex = 0; itemIndex < itemList.length; itemIndex++) {
-            if (itemList[itemIndex].itemId = idItem) {
+            if (itemList[itemIndex].itemId == idItem) {
                 return itemList[itemIndex];
                 break;
             }
-            return undefined;
         }
+        return undefined;
     }
 }
 

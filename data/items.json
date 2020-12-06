@@ -38,5 +38,21 @@
     "description": "Knife",
     "image":"empty",
     "price": 1338
+  },
+  {
+    "itemId": 6,
+    "jeu": "Infinity",
+    "name": "Glock Fade",
+    "description": "Gun",
+    "image":"empty",
+    "price": 13.32
+  },
+  {
+    "itemId": 7,
+    "jeu": "CSGO",
+    "name": "AWP Dragon-Lore",
+    "description": "Riffle",
+    "image":"empty",
+    "price": 1338.99
   }
 ]

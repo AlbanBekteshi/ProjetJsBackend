@@ -68,14 +68,15 @@ class Items {
     }
 
     static getItemsById(idItem) {
-        const itemList = getItemById(ITEMS_FILE_PATH);
+        const itemList = getAllItemsList(ITEMS_FILE_PATH);
         for (let itemIndex = 0; itemIndex < itemList.length; itemIndex++) {
-            if (itemList[itemIndex].itemId = idItem) {
+            if (itemList[itemIndex].itemId == idItem) {
+                console.log(itemList[itemIndex]);
                 return itemList[itemIndex];
                 break;
             }
-            return undefined;
         }
+        return undefined;
     }
 }
 
@@ -107,7 +108,7 @@ function getAllItemsList(filePath) {
     if (!fs.existsSync(filePath)) return [];
     let itemListRawData = fs.readFileSync(filePath);
     let itemList;
-    if (itemList) itemList = JSON.parse(itemListRawData);
+    if (itemListRawData) itemList = JSON.parse(itemListRawData);
     else itemList = [];
     return itemList;
 }

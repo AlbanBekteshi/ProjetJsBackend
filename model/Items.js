@@ -71,6 +71,7 @@ class Items {
         const itemList = getAllItemsList(ITEMS_FILE_PATH);
         for (let itemIndex = 0; itemIndex < itemList.length; itemIndex++) {
             if (itemList[itemIndex].itemId == idItem) {
+                console.log(itemList[itemIndex]);
                 return itemList[itemIndex];
                 break;
             }

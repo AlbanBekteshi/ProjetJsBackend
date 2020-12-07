@@ -10,10 +10,14 @@ const LIFETIME_JWT = 24 * 60 * 60 * 1000; // 10;// in seconds // 24 * 60 * 60 * 
 
 /* GET user list : secure the route with JWT authorization */
 router.get("/", authorize, function (req, res, next) {
-    return res.json(User.list);
+    return res.json(User.getList());
 });
-
-
+router.post("/logout", authorize, function(req, res, next){
+    let idUser = User.getUserId(req.body.username);
+    if (idUser != -1) {
+        User.updateConnection(false, idUser);
+    }
+});
 /* POST user data for authentication */
 router.post("/login", function (req, res, next) {
     let idUser = User.getUserId(req.body.username);
@@ -21,6 +25,7 @@ router.post("/login", function (req, res, next) {
         let user = new User(req.body.username, req.body.password);
         user.checkCredentials(req.body.username, req.body.password).then((match) => {
             if (match) {
+                User.updateConnection(true, idUser);
                 jwt.sign({
                     idUser: idUser,
                     username: user.username
@@ -94,17 +99,5 @@ router.get("/:idUser", authorize, function (req, res, next) {
         return res.status(404).send("ressource not found");
 
 });
-
-/* GET user object from username *//*
-router.get("/:username", function (req, res, next) {
-    console.log("GET users/:username", req.params.username);
-    const userFound = User.getUserFromList(req.params.username);
-    if (userFound) {
-        return res.json(userFound);
-    } else {
-        return res.status(404).send("ressource not found");
-    }
-});
-*/
 
 module.exports = router;

@@ -6,9 +6,10 @@
     "password": "$2b$10$YRH7nTD8qKZtnjNJ.VWk6eUEavOT5lRO4RUbl8bVe5BW37Nkix8wW",
     "fName": "Adrien",
     "lName": "de Decker",
-    "avatar": null,
+    "avatar": 1,
     "type": "users",
-    "itemCollections": [1,3]
+    "itemCollections": [1,3],
+    "connected": false
   },
   {
     "idUser": 4,
@@ -17,9 +18,10 @@
     "password": "$2b$10$ljwc0EfzpeUnZ.xtj97jkOBgJaBLm3JGuQ6F1fL2QBkjWmAs9OZ8C",
     "fName": "Adrien",
     "lName": "de Decker",
-    "avatar": null,
+    "avatar": 2,
     "type": "users",
-    "itemCollections": [1,2,3,4,5]
+    "itemCollections": [1,2,3,4,5],
+    "connected": false
   },
   {
     "idUser": 5,
@@ -28,9 +30,10 @@
     "password": "$2b$10$gBTFIK4NFUPqP5mF1tzE.uqBcY9Nuv.2aJhKdS/QJ9SraJlHNHVze",
     "fName": "Adrien",
     "lName": "de Decker",
-    "avatar": null,
+    "avatar": 3,
     "type": "users",
-    "itemCollections": []
+    "itemCollections": [],
+    "connected": false
   },
   {
     "idUser": 6,
@@ -39,9 +42,10 @@
     "password": "$2b$10$pSHIPuBOZ1hiaELDEEgg8eUCKQKLnwtOk5Mxm91E1L/QkAMNHsd4i",
     "fName": "erkut",
     "lName": "koc",
-    "avatar": null,
+    "avatar": 4,
     "type": "users",
-    "itemCollections": [1,4]
+    "itemCollections": [1,4],
+    "connected": false
   },
   {
     "idUser": 7,
@@ -50,8 +54,9 @@
     "password": "$2b$10$W2BHbgDM/iW5QDIvRt.aluErNyo.gC2kKdErLg5zaBnFa8DoPiRHS",
     "fName": "erkut",
     "lName": "koc",
-    "avatar": null,
+    "avatar": 8,
     "type": "users",
-    "itemCollections": []
+    "itemCollections": [],
+    "connected": false
   }
 ]

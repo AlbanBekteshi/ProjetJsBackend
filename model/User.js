@@ -40,10 +40,6 @@ class User {
     return true;
   }
 
-  static updateConnection(value, userId){
-    updateConnectedField(value, userId)
-  }
-
   /* return a promise with classic promise syntax*/
   checkCredentials(username, password) {
     if (!username || !password) return false;
@@ -59,7 +55,31 @@ class User {
       .catch((err) => err);
   }
 
-  static getList() {
+  // Some example of bcrypt used with sync function
+  /*
+  save() {
+    let userList = getUserListFromFile(FILE_PATH);
+    const hashedPassword = bcrypt.hashSync(this.password, saltRounds);
+
+    userList.push({
+      username: this.email,
+      email: this.email,
+      password: hashedPassword,
+    });
+
+    saveUserListToFile(FILE_PATH, userList);
+  }
+
+  checkCredentials(email, password) {
+    if (!email || !password) return false;
+    let userFound = User.getUserFromList(email);
+    console.log("User::checkCredentials:", userFound, " password:", password);
+    if (!userFound) return false;
+    const match = bcrypt.compareSync(password, userFound.password);
+    return match;
+  }*/
+
+  static get list() {
     let userList = getUserListFromFile(FILE_PATH);
     return userList;
   }
@@ -122,22 +142,6 @@ function saveUserListToFile(filePath, userList) {
   const fs = require("fs");
   let data = JSON.stringify(userList);
   fs.writeFileSync(filePath, data);
-}
-
-function updateConnectedField(value, userId){
-  const fs = require("fs");
-  if (!fs.existsSync(USER_FILE_PATH)) return;
-  let userListRawData = fs.readFileSync(USER_FILE_PATH);
-  let userList;
-  if (userListRawData) userList = JSON.parse(userListRawData);
-
-  for(let i = 0; i < userList.length; i++){
-    if(userList[i].idUser == userId ){
-      userList[i].connected = value;
-    }
-  }
-  let data = JSON.stringify(userList);
-  fs.writeFileSync(USER_FILE_PATH, data);
 }
 
 module.exports = User;

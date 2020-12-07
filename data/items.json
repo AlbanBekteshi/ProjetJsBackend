@@ -4,47 +4,47 @@
     "jeu": "CSGO",
     "name": "Butterfly Knife",
     "description": "Knife",
-    "image": "empty",
+    "image": "CSGO_1.png",
     "price": 1337
   },
   {
     "itemId": 2,
-    "jeu": "CSGO",
+    "jeu": "Diablo",
     "name": "Lion Knife",
     "description": "Knife",
-    "image": "empty",
+    "image": "Diablo_1.png",
     "price": 1338
   },
   {
     "itemId": 3,
-    "jeu": "Fortnite",
+    "jeu": "Diablo",
     "name": "Tiger Knife",
     "description": "Knife",
-    "image":"empty",
+    "image": "Diablo_2.png",
     "price": 1338
   },
   {
     "itemId": 4,
-    "jeu": "Infinity",
+    "jeu": "Rocket League",
     "name": "Powerful Knife",
     "description": "Knife",
-    "image":"empty",
+    "image": "RocketLeague_1.png",
     "price": 1338
   },
   {
     "itemId": 5,
-    "jeu": "Infinity",
+    "jeu": "CSGO",
     "name": "Assasin Knife",
     "description": "Knife",
-    "image":"empty",
+    "image": "CSGO_2.png",
     "price": 1338
   },
   {
     "itemId": 6,
-    "jeu": "Infinity",
+    "jeu": "CSGO",
     "name": "Glock Fade",
     "description": "Gun",
-    "image":"empty",
+    "image": "CSGO_3.png",
     "price": 13.32
   },
   {
@@ -52,7 +52,103 @@
     "jeu": "CSGO",
     "name": "AWP Dragon-Lore",
     "description": "Riffle",
-    "image":"empty",
+    "image": "CSGO_4.png",
     "price": 1338.99
+  },
+  {
+    "itemId": 8,
+    "jeu": "CSGO",
+    "name": "AWP Dragon-Lore",
+    "description": "Riffle",
+    "image": "CSGO_5.png",
+    "price": 1338.99
+  },
+  {
+    "itemId": 9,
+    "jeu": "CSGO",
+    "name": "AWP Dragon-Lore",
+    "description": "Riffle",
+    "image": "CSGO_6.png",
+    "price": 1338.99
+  },
+  {
+    "itemId": 10,
+    "jeu": "CSGO",
+    "name": "AWP Dragon-Lore",
+    "description": "Riffle",
+    "image": "CSGO_7.png",
+    "price": 1338.99
+  },
+  {
+    "itemId": 11,
+    "jeu": "Rocket League",
+    "name": "Powerful Knife",
+    "description": "Knife",
+    "image": "RocketLeague_2.png",
+    "price": 1338
+  },
+  {
+    "itemId": 12,
+    "jeu": "Rocket League",
+    "name": "Powerful Knife",
+    "description": "Knife",
+    "image": "RocketLeague_3.png",
+    "price": 1338
+  },
+  {
+    "itemId": 13,
+    "jeu": "Rocket League",
+    "name": "Powerful Knife",
+    "description": "Knife",
+    "image": "RocketLeague_4.png",
+    "price": 1338
+  },
+  {
+    "itemId": 14,
+    "jeu": "Rocket League",
+    "name": "Powerful Knife",
+    "description": "Knife",
+    "image": "RocketLeague_5.png",
+    "price": 1338
+  },
+  {
+    "itemId": 15,
+    "jeu": "Rocket League",
+    "name": "Powerful Knife",
+    "description": "Knife",
+    "image": "RocketLeague_6.png",
+    "price": 1338
+  },
+  {
+    "itemId": 16,
+    "jeu": "Diablo",
+    "name": "Tiger Knife",
+    "description": "Knife",
+    "image": "Diablo_3.png",
+    "price": 1338
+  },
+  {
+    "itemId": 17,
+    "jeu": "Diablo",
+    "name": "Tiger Knife",
+    "description": "Knife",
+    "image": "Diablo_4.png",
+    "price": 1338
+  },
+  {
+    "itemId": 18,
+    "jeu": "Diablo",
+    "name": "Tiger Knife",
+    "description": "Knife",
+    "image": "Diablo_5.png",
+    "price": 1338
+  },
+  {
+    "itemId": 19,
+    "jeu": "Diablo",
+    "name": "Tiger Knife",
+    "description": "Knife",
+    "image": "Diablo_6.png",
+    "price": 1338
   }
 ]

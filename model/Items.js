@@ -52,19 +52,16 @@ class Items {
     }
 
     /**
-     *
      * @param userId
      * @returns items Collection array for this user.
      */
     static getItemsCollectionIdListForUser(userId) {
         const userList = getUsersList(USERS_FILE_PATH);
-        for (let userIndex = 0; userIndex < userList.length; userIndex++) {
-            if (userList[userIndex].idUser = userId) {
-                return userList[userIndex].itemCollections;
-                break;
-            }
-            return undefined;
-        }
+        const returnArray = [];
+        userList.forEach(user => {
+            if(user.idUser == userId) returnArray.push(user.itemCollections);
+        });
+       return returnArray;
     }
 
     static getItemsById(idItem) {

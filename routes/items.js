@@ -18,11 +18,15 @@ router.get("/", function (req, res, next) {
 
 router.get("/user/:userId", authorize, function (req, res, next) {
     console.log("GET items/user/:userId", req.params.userId);
+
     const idUser = req.params.userId;
     const itemCollectionId = Items.getItemsCollectionIdListForUser(idUser);
+    console.log(itemCollectionId[0].length);
     const itemCollectionListForThisUser = [];
-    for(let index = 0; index < itemCollectionId.length; index++){
-        itemCollectionListForThisUser.push(Items.getItemsById(itemCollectionId[index]));
+
+    for(let index = 0; index < itemCollectionId[0].length; index++){
+        console.log("in boucle itemCollectionId",itemCollectionId[0][index]);
+        itemCollectionListForThisUser.push(Items.getItemsById(itemCollectionId[0][index]));
     }
     if (itemCollectionListForThisUser) {
         return res.json(itemCollectionListForThisUser);

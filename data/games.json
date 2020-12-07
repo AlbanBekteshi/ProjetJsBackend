@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "CSGO"
+
+  },
+  {
+    "id":2,
+    "name": "Diablo"
+
+  },
+  {
+    "id": 3,
+    "name" : "Rocket League"
+  }
+]

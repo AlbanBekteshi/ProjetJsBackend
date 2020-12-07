@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var User = require("../model/User.js");
+var User = require("../model/User");
 var Items = require("../model/Items");
 
 let {authorize, signAsynchronous} = require("../utils/auth");
@@ -10,9 +10,15 @@ const LIFETIME_JWT = 24 * 60 * 60 * 1000; // 10;// in seconds // 24 * 60 * 60 * 
 
 /* GET user list : secure the route with JWT authorization */
 router.get("/", authorize, function (req, res, next) {
-    return res.json(User.list);
+    return res.json(User.getList());
 });
 
+router.put("/logout/:userId", authorize, function (req, res, next) {
+    let idUser = req.params.userId;
+    console.log("Je suis ici : "+idUser);
+    User.updateConnection(false, idUser);
+
+});
 
 /* POST user data for authentication */
 router.post("/login", function (req, res, next) {
@@ -21,6 +27,7 @@ router.post("/login", function (req, res, next) {
         let user = new User(req.body.username, req.body.password);
         user.checkCredentials(req.body.username, req.body.password).then((match) => {
             if (match) {
+                User.updateConnection(true, idUser);
                 jwt.sign({
                     idUser: idUser,
                     username: user.username
@@ -61,7 +68,7 @@ router.post("/", function (req, res, next) {
         }
     }
 
-    console.log(userFound)
+
     if (!userFound) {
         user = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName, usersList[usersListLength - 1].idUser + 1);
 
@@ -88,7 +95,7 @@ router.get("/:idUser", authorize, function (req, res, next) {
     console.log("GET users/:idUser", req.params.idUser);
     const idUser = req.params.idUser;
     const user = User.getUserFromListById(idUser);
-    if (user!=undefined)
+    if (user != undefined)
         return res.json(user);
     else
         return res.status(404).send("ressource not found");

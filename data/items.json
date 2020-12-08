@@ -1,67 +1,67 @@
 [
   {
     "itemId": 1,
-    "jeu": "CSGO",
-    "name": "Butterfly Knife",
-    "description": "Knife",
-    "image": "CSGO_1.png",
-    "price": 1337
+    "jeu": "Rocket League",
+    "name": "Mario Car Skin",
+    "description": "Car",
+    "image": "rocketLeague_car_Mario.png",
+    "price": 13.37
   },
   {
     "itemId": 2,
-    "jeu": "Diablo",
-    "name": "Lion Knife",
-    "description": "Knife",
-    "image": "Diablo_1.png",
-    "price": 1338
+    "jeu": "Rocket League",
+    "name": "Luigi Car Skin",
+    "description": "Car",
+    "image": "rocketLeague_car_Luigi.png",
+    "price": 12.34
   },
   {
     "itemId": 3,
-    "jeu": "Diablo",
-    "name": "Tiger Knife",
+    "jeu": "CSGO",
+    "name": "Karambit Lore",
     "description": "Knife",
-    "image": "Diablo_2.png",
-    "price": 1338
+    "image": "csgo_knife_karambit_lore.png",
+    "price": 567.8
   },
   {
     "itemId": 4,
-    "jeu": "Rocket League",
-    "name": "Powerful Knife",
-    "description": "Knife",
-    "image": "RocketLeague_1.png",
+    "jeu": "Diablo",
+    "name": "Spells Book",
+    "description": "Book",
+    "image": "diablo_books_spellBook.png",
     "price": 1338
   },
   {
     "itemId": 5,
     "jeu": "CSGO",
-    "name": "Assasin Knife",
+    "name": "Bayonet Knife",
     "description": "Knife",
-    "image": "CSGO_2.png",
-    "price": 1338
+    "image": "csgo_knife_bayonet.png",
+    "price": 1595
   },
   {
     "itemId": 6,
     "jeu": "CSGO",
-    "name": "Glock Fade",
-    "description": "Gun",
-    "image": "CSGO_3.png",
-    "price": 13.32
+    "name": "Glock Noir",
+    "description": "Pistol",
+    "image": "csgo_pistol_glock-noir.png",
+    "price": 3575
   },
   {
     "itemId": 7,
     "jeu": "CSGO",
-    "name": "AWP Dragon-Lore",
-    "description": "Riffle",
-    "image": "CSGO_4.png",
+    "name": "AWP Exoskeleton",
+    "description": "Rifle",
+    "image": "csgo_rifles_awp-exoskeleton.png",
     "price": 1338.99
   },
   {
     "itemId": 8,
     "jeu": "CSGO",
-    "name": "AWP Dragon-Lore",
-    "description": "Riffle",
-    "image": "CSGO_5.png",
-    "price": 1338.99
+    "name": "P90 Asiimov",
+    "description": "SMGs",
+    "image": "csgo_smgs_p90-asiimov.png",
+    "price": 14.99
   },
   {
     "itemId": 9,

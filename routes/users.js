@@ -91,4 +91,16 @@ router.get("/:idUser", authorize, function (req, res, next) {
         return res.status(404).send("ressource not found");
 });
 
+/**
+ * Add item :idItem into ItemCollections from user 
+ */
+router.put("/:idItem", function(req,res,next){
+    const idUser = req.rawHeaders[1];
+    console.log(req.rawHeaders[1]);
+    const idItem = req.params.idItem;
+    if(User.addItemIntoItemCollection(idItem,idUser))
+        return true;
+    return res.status(400).send("An error happened");
+});
+
 module.exports = router;

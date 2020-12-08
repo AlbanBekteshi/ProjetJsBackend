@@ -26,7 +26,6 @@ class User {
   async save() {
     let userList = getUserListFromFile(FILE_PATH);
     const hashedPassword = await bcrypt.hash(this.password, saltRounds);
-    console.log("save:", this.email);
     userList.push({
       idUser: this.idUser,
       username: this.username,
@@ -47,10 +46,7 @@ class User {
   checkCredentials(username, password) {
     if (!username || !password) return false;
     let userFound = User.getUserFromList(username);
-    //console.log("User::checkCredentials:", userFound, " password:", password);
     if (!userFound) return Promise.resolve(false);
-    //console.log("checkCredentials:prior to await");
-    // return the promise
     return bcrypt
       .compare(password, userFound.password)
       .then((match) => match)
@@ -62,21 +58,19 @@ class User {
     updateConnectedField(value, userId, FILE_PATH);
   }
   static getList() {
-    let userList = getUserListFromFile(FILE_PATH);
-    return userList;
+    return getUserListFromFile(FILE_PATH);
   }
 
   static isUsername(username) {
     const userFound = User.getUserFromList(username);
-    console.log("User::isUser:", userFound);
     return userFound !== undefined;
   }
 
   static isUserEmail(email){
     const userFound = User.getUserFromListMail(email);
-    console.log("User::isUser:", userFound);
     return userFound !== undefined;
   }
+
   static getUserFromListById(userID) {
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {
@@ -90,7 +84,7 @@ class User {
     for (let index = 0; index < userList.length; index++) {
       if (userList[index].username === username) return userList[index];
     }
-    return;
+    return undefined;
   }
 
   static getUserId(username){
@@ -126,12 +120,13 @@ function saveUserListToFile(filePath, userList) {
   fs.writeFileSync(filePath, data);
 }
 function updateConnectedField(value, userId, filePath){
+  //TODO refactor from getUserListFromFile() ?
+  //let userList = getUserListFromFile(filePath);
   const fs = require("fs");
   if (!fs.existsSync(filePath)) return [];
   let userListRawData = fs.readFileSync(filePath);
   let userList;
   if (userListRawData) {
-
     userList = JSON.parse(userListRawData);
   }
 

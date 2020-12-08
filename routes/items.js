@@ -6,26 +6,19 @@ let {authorize, signAsynchronous} = require("../utils/auth");
 
 /* GET user object from username */
 router.get("/", function (req, res, next) {
-    console.log("GET /items");
-    const items = Items.getAllItemsCollection();
-    return res.json(items);
+    return res.json(Items.getAllItemsCollection());
 });
 
 /**
  * Get items collection from userId
  * Si fetch() GET /api/users/1 + authorization header contenant le token (token.userId)
  */
-
 router.get("/user/:userId", authorize, function (req, res, next) {
-    console.log("GET items/user/:userId", req.params.userId);
-
     const idUser = req.params.userId;
     const itemCollectionId = Items.getItemsCollectionIdListForUser(idUser);
-    console.log(itemCollectionId[0].length);
     const itemCollectionListForThisUser = [];
 
     for(let index = 0; index < itemCollectionId[0].length; index++){
-        console.log("in boucle itemCollectionId",itemCollectionId[0][index]);
         itemCollectionListForThisUser.push(Items.getItemsById(itemCollectionId[0][index]));
     }
     if (itemCollectionListForThisUser) {
@@ -35,12 +28,10 @@ router.get("/user/:userId", authorize, function (req, res, next) {
     }
 });
 
-
 /**
  * Get item from itemId
  */
 router.get("/:itemId", function (req,res,next){
-    console.log("/api/items/:itemId " + req.params.itemId);
     return res.json(Items.getItemsById(req.params.itemId));
 });
 

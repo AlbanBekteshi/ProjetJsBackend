@@ -102,6 +102,10 @@ class User {
     }
     return;
   }
+
+  static addItemIntoItemCollection(itemId,userId){
+    return addItemToCollection(itemId,userId);
+  }
 }
 
 function getUserListFromFile(filePath) {
@@ -138,6 +142,37 @@ function updateConnectedField(value, userId, filePath){
   }
   let data = JSON.stringify(userList);
   fs.writeFileSync(filePath, data);
+}
+
+/**
+ * Ajoute l'item (itemId) dans la collection du user (userId)
+ * @param itemId id de l'item a ajouter
+ * @param userId id du suer chez qui rajouter l'item
+ */
+function addItemToCollection(itemId,userId){
+  const fs = require('fs');
+  if(!fs.existsSync(FILE_PATH)) return false;
+
+  let userListRawData = fs.readFileSync(FILE_PATH);
+  let userList;
+  if (userListRawData) {
+    userList = JSON.parse(userListRawData);
+  }
+  else{return false;}
+
+  for(let i = 0; i < userList.length; i++){
+    if(userList[i].idUser == userId ){
+      let list = userList[i].itemCollections;
+      console.log("avant",list);
+      list.push(parseInt(itemId));
+      userList[i].itemCollections = list;
+      console.log("apres",list);
+    }
+  }
+  let data = JSON.stringify(userList);
+  fs.writeFileSync(FILE_PATH, data);
+
+  return true;
 }
 
 module.exports = User;

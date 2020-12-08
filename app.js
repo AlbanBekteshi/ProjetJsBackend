@@ -27,7 +27,7 @@ var logger = require("morgan");
 
 var usersRouter = require("./routes/users");
 var itemsRouter = require("./routes/items");
-
+var gamesRouter = require("./routes/games");
 var app = express();
 
 app.use(logger("dev"));
@@ -36,6 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/items", itemsRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/games", gamesRouter);
 
 
 

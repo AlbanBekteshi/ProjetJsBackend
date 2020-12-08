@@ -6,7 +6,7 @@ const myPlaintextPassword = "145OkyayNo668Pass";
 const FILE_PATH = __dirname + "./../data/users.json";
 
 class User {
-  constructor(username, email, password, fName, lName, idUser) {
+  constructor(username, email, password, fName, lName, idUser, connected) {
     //TODO modifié et gérer l'utilisateur NOUVEAU et Existant
     this.idUser = idUser;
     //this.idUser = getUserListFromFile(FILE_PATH).length+1;
@@ -18,13 +18,14 @@ class User {
     this.avatar = null;
     this.type = "users";
     this.itemCollections = [];
+    this.connected = connected;
   }
+
 
   /* return a promise with async / await */ 
   async save() {
     let userList = getUserListFromFile(FILE_PATH);
     const hashedPassword = await bcrypt.hash(this.password, saltRounds);
-    console.log("save:", this.email);
     userList.push({
       idUser: this.idUser,
       username: this.username,
@@ -35,6 +36,7 @@ class User {
       avatar: this.avatar,
       type: this.type,
       itemCollections: this.itemCollections,
+      connected: this.connected
     });
     saveUserListToFile(FILE_PATH, userList);
     return true;
@@ -44,57 +46,31 @@ class User {
   checkCredentials(username, password) {
     if (!username || !password) return false;
     let userFound = User.getUserFromList(username);
-    console.log("User::checkCredentials:", userFound, " password:", password);
     if (!userFound) return Promise.resolve(false);
-    //try {
-    console.log("checkCredentials:prior to await");
-    // return the promise
     return bcrypt
       .compare(password, userFound.password)
       .then((match) => match)
       .catch((err) => err);
   }
 
-  // Some example of bcrypt used with sync function
-  /*
-  save() {
-    let userList = getUserListFromFile(FILE_PATH);
-    const hashedPassword = bcrypt.hashSync(this.password, saltRounds);
 
-    userList.push({
-      username: this.email,
-      email: this.email,
-      password: hashedPassword,
-    });
-
-    saveUserListToFile(FILE_PATH, userList);
+  static updateConnection(value, userId){
+    updateConnectedField(value, userId, FILE_PATH);
   }
-
-  checkCredentials(email, password) {
-    if (!email || !password) return false;
-    let userFound = User.getUserFromList(email);
-    console.log("User::checkCredentials:", userFound, " password:", password);
-    if (!userFound) return false;
-    const match = bcrypt.compareSync(password, userFound.password);
-    return match;
-  }*/
-
-  static get list() {
-    let userList = getUserListFromFile(FILE_PATH);
-    return userList;
+  static getList() {
+    return getUserListFromFile(FILE_PATH);
   }
 
   static isUsername(username) {
     const userFound = User.getUserFromList(username);
-    console.log("User::isUser:", userFound);
     return userFound !== undefined;
   }
 
   static isUserEmail(email){
     const userFound = User.getUserFromListMail(email);
-    console.log("User::isUser:", userFound);
     return userFound !== undefined;
   }
+
   static getUserFromListById(userID) {
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {
@@ -108,7 +84,7 @@ class User {
     for (let index = 0; index < userList.length; index++) {
       if (userList[index].username === username) return userList[index];
     }
-    return;
+    return undefined;
   }
 
   static getUserId(username){
@@ -140,6 +116,26 @@ function getUserListFromFile(filePath) {
 
 function saveUserListToFile(filePath, userList) {
   const fs = require("fs");
+  let data = JSON.stringify(userList);
+  fs.writeFileSync(filePath, data);
+}
+function updateConnectedField(value, userId, filePath){
+  //TODO refactor from getUserListFromFile() ?
+  //let userList = getUserListFromFile(filePath);
+  const fs = require("fs");
+  if (!fs.existsSync(filePath)) return [];
+  let userListRawData = fs.readFileSync(filePath);
+  let userList;
+  if (userListRawData) {
+    userList = JSON.parse(userListRawData);
+  }
+
+  for(let i = 0; i < userList.length; i++){
+    if(userList[i].idUser == userId ){
+      userList[i].connected = value;
+      break;
+    }
+  }
   let data = JSON.stringify(userList);
   fs.writeFileSync(filePath, data);
 }

@@ -89,7 +89,7 @@ function getUsersList(filePath) {
     else usersList = [];
     return usersList;
 }
-
+//TODO répétitif ?
 function getItemById(filePath) {
     const fs = require("fs");
     if (!fs.existsSync(filePath)) return [];
@@ -99,7 +99,7 @@ function getItemById(filePath) {
     else itemList = [];
     return itemList;
 }
-
+//TODO répétitif ?
 function getAllItemsList(filePath) {
     const fs = require("fs");
     if (!fs.existsSync(filePath)) return [];

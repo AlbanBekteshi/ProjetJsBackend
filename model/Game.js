@@ -12,8 +12,7 @@ class Game {
      * Get game list
      */
     static getAllGame() {
-        const gameList = getGame(GAME_FILE_PATH)
-        return gameList;
+        return getGame(GAME_FILE_PATH);
     }
 
 }

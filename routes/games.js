@@ -5,6 +5,5 @@ var Game = require("../model/Game");
 let {authorize, signAsynchronous} = require("../utils/auth");
 
 router.get("/games", function (req, res, next){
-    const games = Game.getAllGame();
-    return res.json(games);
+    return res.json(Game.getAllGame());
 });

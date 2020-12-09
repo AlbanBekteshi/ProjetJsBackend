@@ -151,14 +151,8 @@ function updateConnectedField(value, userId, filePath){
  */
 function addItemToCollection(itemId,userId){
   const fs = require('fs');
-  if(!fs.existsSync(FILE_PATH)) return false;
-
-  let userListRawData = fs.readFileSync(FILE_PATH);
-  let userList;
-  if (userListRawData) {
-    userList = JSON.parse(userListRawData);
-  }
-  else{return false;}
+  let userList = User.getList();
+  if(!userList) return false;
 
   for(let i = 0; i < userList.length; i++){
     if(userList[i].idUser == userId ){

@@ -95,8 +95,9 @@ router.get("/:idUser", authorize, function (req, res, next) {
  * Add item :idItem into ItemCollections from user 
  */
 router.put("/:idItem", function(req,res,next){
+    //TODO possible modification pour récupérer le idUser
     const idUser = req.rawHeaders[1];
-    console.log(req.rawHeaders[1]);
+    console.log(idUser);
     const idItem = req.params.idItem;
     if(User.addItemIntoItemCollection(idItem,idUser))
         return true;

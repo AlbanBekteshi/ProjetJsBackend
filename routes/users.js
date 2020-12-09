@@ -2,20 +2,13 @@ var express = require("express");
 var router = express.Router();
 var User = require("../model/User");
 var Items = require("../model/Items");
+var Avatar = require("../model/Avatar");
 
 let {authorize, signAsynchronous} = require("../utils/auth");
 const jwt = require("jsonwebtoken");
 const jwtSecret = "jkjJ1235Ohno!";
 const LIFETIME_JWT = 24 * 60 * 60 * 1000; // 10;// in seconds // 24 * 60 * 60 * 1000 = 24h
 
-/* GET user list : secure the route with JWT authorization */
-router.get("/", authorize, function (req, res, next) {
-    return res.json(User.getList());
-});
-
-router.put("/logout/:userId", authorize, function (req, res, next) {
-    User.updateConnection(false, req.params.userId);
-});
 
 /* POST user data for authentication */
 router.post("/login", function (req, res, next) {
@@ -40,6 +33,12 @@ router.post("/login", function (req, res, next) {
         })
     }
 });
+router.post("/updateprofil", function (req, res, next) {
+    let idUser = User.getUserId(req.body.username);
+    if (idUser != -1) {
+        User.updateProfil(req.body.userId, req.body.username, req.body.email, req.body.fName, req.body.lName, req.body.avatar);
+    }
+});
 
 /* POST a new user */
 router.post("/", function (req, res, next) {
@@ -48,9 +47,9 @@ router.post("/", function (req, res, next) {
     if (User.isUserEmail(req.body.email)) {
         return res.status(409).end();
     }
-    
+
     const usersList = User.getList();
-    
+
     let usersListLength = usersList.length;
     let userFound = false;
     let user;
@@ -77,7 +76,23 @@ router.post("/", function (req, res, next) {
         });
     });
 });
+/* GET user list : secure the route with JWT authorization */
+router.get("/", authorize, function (req, res, next) {
+    return res.json(User.getList());
+});
 
+router.put("/logout/:userId", authorize, function (req, res, next) {
+    User.updateConnection(false, req.params.userId);
+});
+router.put("/avatar/:userId", authorize, function (req, res, next) {
+    User.updateAvatar(req.params.avatarId, req.params.userId);
+});
+router.get("/avatars", authorize, function (req, res, next) {
+    return Avatar.getAllAvatar();
+});
+router.get("/avatar/:idAvatar", authorize, function (req, res, next) {
+    return Avatar.getAvatarNameById(req.params.avatarID);
+});
 /**
  * Get items collection from userId
  * Si fetch() GET /api/users/1 + authorization header contenant le token (token.userId)
@@ -92,14 +107,14 @@ router.get("/:idUser", authorize, function (req, res, next) {
 });
 
 /**
- * Add item :idItem into ItemCollections from user 
+ * Add item :idItem into ItemCollections from user
  */
-router.put("/:idItem", function(req,res,next){
+router.put("/:idItem", function (req, res, next) {
     //TODO possible modification pour récupérer le idUser
     const idUser = req.rawHeaders[1];
     console.log(idUser);
     const idItem = req.params.idItem;
-    if(User.addItemIntoItemCollection(idItem,idUser))
+    if (User.addItemIntoItemCollection(idItem, idUser))
         return true;
     return res.status(400).send("An error happened");
 });

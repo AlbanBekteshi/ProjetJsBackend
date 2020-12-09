@@ -57,9 +57,17 @@ class User {
   static updateConnection(value, userId){
     updateConnectedField(value, userId, FILE_PATH);
   }
+  static updateAvatar(avatarId, userId){
+    updateAvatar(userId, avatarId, FILE_PATH);
+  }
   static getList() {
     return getUserListFromFile(FILE_PATH);
   }
+
+  static updateProfil(userId, username, email, fName, lName, idAvatar){
+    updateProfilById(userId, username, email, fName, lName, idAvatar, FILE_PATH );
+  }
+
 
   static isUsername(username) {
     const userFound = User.getUserFromList(username);
@@ -106,8 +114,32 @@ class User {
   static addItemIntoItemCollection(itemId,userId){
     return addItemToCollection(itemId,userId);
   }
-}
 
+
+}
+function updateProfilById(id, username, email, fName, lName, idAvatar, filePath ){
+  const fs = require("fs");
+  if (!fs.existsSync(filePath)) return [];
+  let userListRawData = fs.readFileSync(filePath);
+  let userList;
+  if (userListRawData) {
+    userList = JSON.parse(userListRawData);
+  }
+
+  for(let i = 0; i < userList.length; i++){
+    if(userList[i].idUser == id ){
+      userList[i].username = username;
+      userList[i].email = email;
+      userList[i].fName = fName;
+      userList[i].lName =lName;
+      userList[i].avatar = idAvatar;
+      break;
+    }
+  }
+  let data = JSON.stringify(userList);
+  fs.writeFileSync(filePath, data);
+
+}
 function getUserListFromFile(filePath) {
   const fs = require("fs");
   if (!fs.existsSync(filePath)) return [];
@@ -168,5 +200,22 @@ function addItemToCollection(itemId,userId){
 
   return true;
 }
+function updateAvatar(userId, idAvatar, filePath){
+  const fs = require("fs");
+  if (!fs.existsSync(filePath)) return [];
+  let userListRawData = fs.readFileSync(filePath);
+  let userList;
+  if (userListRawData) {
+    userList = JSON.parse(userListRawData);
+  }
 
+  for(let i = 0; i < userList.length; i++){
+    if(userList[i].idUser == userId ){
+      userList[i].avatar = idAvatar;
+      break;
+    }
+  }
+  let data = JSON.stringify(userList);
+  fs.writeFileSync(filePath, data);
+}
 module.exports = User;

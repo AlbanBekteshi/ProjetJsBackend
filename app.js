@@ -19,24 +19,7 @@ myHttpExpressServer.listen(3000, ()  => {
   console.log('Socket server listening on *:3000');
 });
 */
-const WebSocket = require('ws');
 
-const webSocketServer = new WebSocket.Server({ port: 8080 });
-
-webSocketServer.on('connection', webSocket => {
-  webSocket.on('message', message => {
-    console.log('Received:', message);
-    broadcast(message);
-  });
-});
-
-function broadcast(data) {
-  webSocketServer.clients.forEach(user => {
-    if (user.readyState === WebSocket.OPEN) {
-      user.send(data);
-    }
-  });
-}
 //---------------------------------------------------
 var createError = require("http-errors");
 var express = require("express");

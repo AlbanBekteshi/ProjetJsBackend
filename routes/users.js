@@ -120,5 +120,19 @@ router.put("/item/:idItem/:idUser", function (req, res, next) {
         return true;
     return res.status(400).send("An error happened");
 });
+/**
+ * delete item :idItem into ItemCollections from user
+ */
+router.delete("/item/:idItem/:idUser", function (req, res, next) {
+    //TODO possible modification pour récupérer le idUser
+    const idUser = req.params.idUser;
+    console.log("cest quoi "+idUser);
+    console.log("idUser "+idUser);
+    const idItem = req.params.idItem;
+    if (User.deleteItemIntoItemCollection(itemId,userId))
+        return true;
+    return res.status(400).send("An error happened");
+});
+
 
 module.exports = router;

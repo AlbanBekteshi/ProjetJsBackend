@@ -121,7 +121,9 @@ class User {
   static addItemIntoItemCollection(itemId,userId){
     return addItemToCollection(itemId,userId);
   }
-
+  static deleteItemIntoItemCollection(itemId,userId){
+    return deleteItemToCollection(itemId,userId);
+  }
 
 }
 function updateProfilById(id, username, email, fName, lName, idAvatar, filePath ){
@@ -205,6 +207,25 @@ function addItemToCollection(itemId,userId){
   let data = JSON.stringify(userList);
   fs.writeFileSync(FILE_PATH, data);
 
+  return true;
+}
+function deleteItemToCollection(itemId,userId){
+  const fs = require('fs');
+  let userList = User.getList();
+  if(!userList) return false;
+
+  for(let i = 0; i < userList.length; i++){
+    if(userList[i].idUser == userId ){
+      let list = userList[i].itemCollections;
+      for (let index = 0; i < userList[i].itemCollections.length; index++){
+        delete userList[i].itemCollections[index];
+        return true;
+      }
+      userList[i].itemCollections = list;
+    }
+  }
+  let data = JSON.stringify(userList);
+  fs.writeFileSync(FILE_PATH, data);
   return true;
 }
 function updateAvatar(userId, idAvatar, filePath){

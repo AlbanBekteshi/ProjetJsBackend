@@ -125,7 +125,7 @@ router.put("/item/:idItem/:idUser", function (req, res, next) {
     console.log("idUser "+idUser);
     const idItem = req.params.idItem;
     if (User.addItemIntoItemCollection(idItem, idUser))
-        return true;
+        return res.status(200).send("oke");
     return res.status(400).send("An error happened");
 });
 /**
@@ -138,7 +138,7 @@ router.post("/item/:idItem/:idUser", function (req, res, next) {
     console.log("idUser "+idUser);
     const idItem = req.params.idItem;
     if (User.deleteItemIntoItemCollection(idItem,idUser))
-        return true;
+        return res.status(200).send("oke");
     return res.status(400).send("An error happened");
 });
 

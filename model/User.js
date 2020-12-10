@@ -217,11 +217,13 @@ function deleteItemToCollection(itemId,userId){
   for(let i = 0; i < userList.length; i++){
     if(userList[i].idUser == userId ){
       let list = userList[i].itemCollections;
-      for (let index = 0; i < userList[i].itemCollections.length; index++){
-        delete userList[i].itemCollections[index];
-        return true;
+      let newlist= [];
+      for (let index = 0; index < list.length; index++){
+        if(list[index]!= itemId){
+          newlist.push(list[index])
+        }
       }
-      userList[i].itemCollections = list;
+      userList[i].itemCollections = newlist;
     }
   }
   let data = JSON.stringify(userList);

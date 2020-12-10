@@ -6,7 +6,7 @@ const myPlaintextPassword = "145OkyayNo668Pass";
 const FILE_PATH = __dirname + "./../data/users.json";
 
 class User {
-  constructor(username, email, password, fName, lName, idUser, connected) {
+  constructor(username, email, password, fName, lName, idUser, connected,avatar) {
     //TODO modifié et gérer l'utilisateur NOUVEAU et Existant
     this.idUser = idUser;
     //this.idUser = getUserListFromFile(FILE_PATH).length+1;
@@ -15,7 +15,7 @@ class User {
     this.password = password;
     this.fName = fName;
     this.lName = lName;
-    this.avatar = null;
+    this.avatar = avatar;
     this.type = "users";
     this.itemCollections = [];
     this.connected = connected;

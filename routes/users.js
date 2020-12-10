@@ -57,14 +57,14 @@ router.post("/", function (req, res, next) {
     for (let index = 0; index < usersListLength; index++) {
 
         if (usersList[index].username == req.body.username) {
-            user = new User(usersList[index].username, usersList[index].email, usersList[index].password, usersList[index].fName, usersList[index].lName, usersList[index].idUser);
+            user = new User(usersList[index].username, usersList[index].email, usersList[index].password, usersList[index].fName, usersList[index].lName, usersList[index].idUser,usersList[index].connected,userList[index].avatar);
             userFound = true;
             break;
         }
     }
 
     if (!userFound) {
-        user = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName, usersList[usersListLength - 1].idUser + 1);
+        user = new User(req.body.username, req.body.email, req.body.password, req.body.fName, req.body.lName, usersList[usersListLength - 1].idUser + 1,true,req.body.avatar);
     }
 
     user.save().then(() => {

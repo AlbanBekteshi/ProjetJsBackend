@@ -87,10 +87,11 @@ router.put("/logout/:userId", authorize, function (req, res, next) {
 router.put("/avatar/:userId", authorize, function (req, res, next) {
     User.updateAvatar(req.params.avatarId, req.params.userId);
 });
-router.get("/avatars", authorize, function (req, res, next) {
-    return Avatar.getAllAvatar();
+router.get("/avatars", function (req, res, next) {
+    let list = Avatar.getAllAvatar();
+    res.send(list);
 });
-router.get("/avatar/:idAvatar", authorize, function (req, res, next) {
+router.get("/avatar/:idAvatar", function (req, res, next) {
     return Avatar.getAvatarNameById(req.params.avatarID);
 });
 /**

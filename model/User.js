@@ -21,7 +21,14 @@ class User {
     this.connected = connected;
   }
 
-
+  /**
+   *
+   * @param idItem
+   * @returns JSON USER LIST CONTAINS idItems
+   */
+  static getUserById(idItem){
+    return getUserFromIdItem(idItem, FILE_PATH);
+  }
   /* return a promise with async / await */ 
   async save() {
     let userList = getUserListFromFile(FILE_PATH);
@@ -201,7 +208,7 @@ function addItemToCollection(itemId,userId){
   return true;
 }
 function updateAvatar(userId, idAvatar, filePath){
-  const fs = require("fs");
+  const fs = require('fs');
   if (!fs.existsSync(filePath)) return [];
   let userListRawData = fs.readFileSync(filePath);
   let userList;
@@ -217,5 +224,22 @@ function updateAvatar(userId, idAvatar, filePath){
   }
   let data = JSON.stringify(userList);
   fs.writeFileSync(filePath, data);
+}
+
+function getUserFromIdItem(idItem, filePath){
+  const fs = require("fs");
+  if (!fs.existsSync(filePath)) return [];
+  let userListRawData = fs.readFileSync(filePath);
+  let userList;
+  let userListContainsItem = JSON.parse(userListRawData); // parse du tableau pour qu'il contient tout les key du fichier json.
+  if (userListRawData) userList = JSON.parse(userListRawData);
+  for(let i = 0; i < userList.length; i++){ // réécriture du json à renvoyer avec les valeurs choisit.
+    for(let itemIndex = 0; itemIndex < userList[i].itemCollections.length; itemIndex++){
+      if(userList[i].itemCollections[itemIndex].contains(idItem)){
+        userListContainsItem.push(userList[i]);
+      }
+    }
+  }
+  return userListContainsItem;
 }
 module.exports = User;

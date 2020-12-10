@@ -65,90 +65,186 @@
   },
   {
     "itemId": 9,
-    "jeu": "CSGO",
-    "name": "AWP Dragon-Lore",
-    "description": "Riffle",
-    "image": "CSGO_6.png",
-    "price": 1338.99
+    "jeu": "Diablo",
+    "name": "Shield Gryffindor",
+    "description": "Shield",
+    "image": "diablo_shield_gryffindor.png",
+    "price": 3.99
   },
   {
     "itemId": 10,
-    "jeu": "CSGO",
-    "name": "AWP Dragon-Lore",
-    "description": "Riffle",
-    "image": "CSGO_7.png",
-    "price": 1338.99
+    "jeu": "Rocket League",
+    "name": "50 Years Hot Wheels",
+    "description": "Wheel",
+    "image": "rocketLeague_wheel_50yearsHotWheels.png",
+    "price": 38.99
   },
   {
     "itemId": 11,
     "jeu": "Rocket League",
-    "name": "Powerful Knife",
-    "description": "Knife",
-    "image": "RocketLeague_2.png",
+    "name": "Wheel Hot Wheels",
+    "description": "Wheel",
+    "image": "rocketLeague_wheel_hotWheels.png",
     "price": 1338
   },
   {
     "itemId": 12,
-    "jeu": "Rocket League",
-    "name": "Powerful Knife",
-    "description": "Knife",
-    "image": "RocketLeague_3.png",
+    "jeu": "Diablo",
+    "name": "Demonhunter Orb",
+    "description": "Orb",
+    "image": "diablo_orb_demonhunter.png",
     "price": 1338
   },
   {
     "itemId": 13,
-    "jeu": "Rocket League",
-    "name": "Powerful Knife",
-    "description": "Knife",
-    "image": "RocketLeague_4.png",
+    "jeu": "CSGO",
+    "name": "AK-47 Asiimov",
+    "description": "Rifle",
+    "image": "csgo_rifles_ak47-asiimov.png",
     "price": 1338
   },
   {
     "itemId": 14,
-    "jeu": "Rocket League",
-    "name": "Powerful Knife",
-    "description": "Knife",
-    "image": "RocketLeague_5.png",
+    "jeu": "CSGO",
+    "name": "USP-S krokos",
+    "description": "Pistol",
+    "image": "csgo_pistol_usps-krokos.png",
     "price": 1338
   },
   {
     "itemId": 15,
-    "jeu": "Rocket League",
-    "name": "Powerful Knife",
-    "description": "Knife",
-    "image": "RocketLeague_6.png",
+    "jeu": "Diablo",
+    "name": "Classic Sword",
+    "description": "Sword",
+    "image": "diablo_sword_classicSword.png",
     "price": 1338
   },
   {
     "itemId": 16,
     "jeu": "Diablo",
-    "name": "Tiger Knife",
-    "description": "Knife",
-    "image": "Diablo_3.png",
+    "name": "Demonhunter Sword",
+    "description": "Dword",
+    "image": "diablo_sword_demonhunter.png",
     "price": 1338
   },
   {
     "itemId": 17,
-    "jeu": "Diablo",
-    "name": "Tiger Knife",
-    "description": "Knife",
-    "image": "Diablo_4.png",
+    "jeu": "Rocket League",
+    "name": "Light Blue Neon Car Skin",
+    "description": "Car",
+    "image": "rocketLeague_car_lightBlueNeon.png",
     "price": 1338
   },
   {
     "itemId": 18,
-    "jeu": "Diablo",
-    "name": "Tiger Knife",
-    "description": "Knife",
-    "image": "Diablo_5.png",
+    "jeu": "Rocket League",
+    "name": "Halloween Wheel",
+    "description": "Wheel",
+    "image": "rocketLeague_wheel_Halloween.png",
     "price": 1338
   },
   {
     "itemId": 19,
+    "jeu": "Rocket League",
+    "name": "Sprocket Orange Wheel",
+    "description": "Wheel",
+    "image": "rocketLeague_wheel_sprocketOrange.png",
+    "price": 1338
+  },
+  {
+    "itemId": 20,
+    "jeu": "CSGO",
+    "name": "MAG-7 Monstercall",
+    "description": "Heavy",
+    "image": "csgo_heavy_mag7-monsterCall.png",
+    "price": 1338
+  },
+  {
+    "itemId": 21,
+    "jeu": "CSGO",
+    "name": "Negev Impact",
+    "description": "Heavy",
+    "image": "csgo_heavy_negev-impact.png",
+    "price": 1338
+  },
+  {
+    "itemId": 22,
     "jeu": "Diablo",
-    "name": "Tiger Knife",
-    "description": "Knife",
-    "image": "Diablo_6.png",
+    "name": "Nether Star Gem",
+    "description": "Gem",
+    "image": "diablo_gem_netherStar.png",
+    "price": 1338
+  },
+  {
+    "itemId": 23,
+    "jeu": "Diablo",
+    "name": "Emerald Gem",
+    "description": "Gem",
+    "image": "diablo_gem_emerald.png",
+    "price": 1338
+  },
+  {
+    "itemId": 24,
+    "jeu": "CSGO",
+    "name": "M4A4-s Printstream",
+    "description": "Rifle",
+    "image": "csgo_rifles_m4a4s-printstream.png",
+    "price": 1338
+  },
+  {
+    "itemId": 25,
+    "jeu": "Diablo",
+    "name": "BallHigh Orb",
+    "description": "Orb",
+    "image": "diablo_orb_ballHigh.png",
+    "price": 1338
+  },
+  {
+    "itemId": 26,
+    "jeu": "CSGO",
+    "name": "AK-47 Neon Rider",
+    "description": "Rifle",
+    "image": "csgo_rifles_ak47-neonRider.png",
+    "price": 1338
+  },
+  {
+    "itemId": 27,
+    "jeu": "CSGO",
+    "name": "Revolver R8 Fade Metallic",
+    "description": "Pistol",
+    "image": "csgo_pistol_revolver-fadeMetallic.png",
+    "price": 1338
+  },
+  {
+    "itemId": 28,
+    "jeu": "CSGO",
+    "name": "Revolver R8 Cybersport",
+    "description": "Pistol",
+    "image": "csgo_pistol_revolver-cybersport.png",
+    "price": 1338
+  },
+  {
+    "itemId": 29,
+    "jeu": "CSGO",
+    "name": "M4A4 Cyberpunk",
+    "description": "Rifle",
+    "image": "csgo_rifles_m4a4-cyberpunk.png",
+    "price": 1338
+  },
+  {
+    "itemId": 30,
+    "jeu": "CSGO",
+    "name": "Desert Eagle Agressor",
+    "description": "Pistol",
+    "image": "csgo_pistol_desertEagle-Agressor.png",
+    "price": 1338
+  },
+  {
+    "itemId": 31,
+    "jeu": "CSGO",
+    "name": "Nova Polymer",
+    "description": "Heavy",
+    "image": "csgo_heavy_nova-polymer.png",
     "price": 1338
   }
 ]

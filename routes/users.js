@@ -76,10 +76,17 @@ router.post("/", function (req, res, next) {
         });
     });
 });
+
+
 /* GET user list : secure the route with JWT authorization */
 router.get("/", authorize, function (req, res, next) {
     return res.json(User.getList());
 });
+/*
+router.get("/list", authorize(), function(req, res, next){
+    return res.json(User.getList());
+});*/
+
 
 router.put("/logout/:userId", authorize, function (req, res, next) {
     User.updateConnection(false, req.params.userId);

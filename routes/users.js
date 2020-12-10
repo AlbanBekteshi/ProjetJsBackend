@@ -38,6 +38,7 @@ router.post("/updateprofil", function (req, res, next) {
     if (idUser != -1) {
         User.updateProfil(req.body.userId, req.body.username, req.body.email, req.body.fName, req.body.lName, req.body.avatar);
     }
+    return res.status(200).send("ok");
 });
 
 /* POST a new user */
@@ -139,6 +140,27 @@ router.post("/item/:idItem/:idUser", function (req, res, next) {
     if (User.deleteItemIntoItemCollection(idItem,idUser))
         return true;
     return res.status(400).send("An error happened");
+});
+
+router.get("/isUsernameAvailible/:username",(req,res,next)=>{
+    let userList = User.getList();
+
+    userList.forEach((user)=>{
+        if(user.username==req.params.username) return res.status(201).send("Username deja utilisé");
+    });
+    return res.status(200).send("Username disponible");
+});
+
+router.get("/isEmailAvailible/:email",(req,res,next)=>{
+    let userList = User.getList();
+    
+    userList.forEach((user)=>{
+        if(user.email==req.params.email){
+            console.log("ok");
+            return res.status(201).send("Email deja utilisé");
+        } 
+    });
+    return res.status(200).send("Email disponible");
 });
 
 

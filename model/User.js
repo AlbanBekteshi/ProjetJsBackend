@@ -202,6 +202,7 @@ function addItemToCollection(itemId,userId){
       list.push(parseInt(itemId));
       userList[i].itemCollections = list;
       console.log("apres",list);
+      break;
     }
   }
   let data = JSON.stringify(userList);

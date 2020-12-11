@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require("../model/User");
 var Items = require("../model/Items");
 var Avatar = require("../model/Avatar");
+var Chat = require("../model/Chat");
 
 let {authorize, signAsynchronous} = require("../utils/auth");
 const jwt = require("jsonwebtoken");
@@ -161,6 +162,13 @@ router.get("/isEmailAvailible/:email",(req,res,next)=>{
         } 
     });
     return res.status(200).send("Email disponible");
+});
+router.post("/chat/:id/:text", authorize, function (req, res, next){
+    return res.json(Chat.addDataJson(req.params.id, req.params.text));
+});
+router.get("/chat", authorize, function (req, res, next){
+    console.log("je passe ici");
+    return res.json(Chat.getData());
 });
 
 

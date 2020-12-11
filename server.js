@@ -1,5 +1,5 @@
-import { Server, OPEN } from 'ws';
-
+//import { Server, OPEN } from 'ws';
+const {Server, OPEN} = require("ws");
 const webSocketServer = new Server({ port: 8080 });
 
 webSocketServer.on('connection', webSocket => {

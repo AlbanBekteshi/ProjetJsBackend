@@ -163,5 +163,11 @@ router.get("/isEmailAvailible/:email",(req,res,next)=>{
     return res.status(200).send("Email disponible");
 });
 
+router.get("/getUserFromItem/:idItem", (req,res,next)=>{
+    let userList = User.getUserFromIdItemItem(req.params.idItem);
+
+    return res.status(200).send(userList);
+})
+
 
 module.exports = router;

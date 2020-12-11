@@ -124,6 +124,9 @@ class User {
   static deleteItemIntoItemCollection(itemId,userId){
     return deleteItemToCollection(itemId,userId);
   }
+  static  getUserFromIdItemItem(itemId){
+    return getUserFromIdItem(itemId);
+  }
 
 }
 function updateProfilById(id, username, email, fName, lName, idAvatar, filePath ){
@@ -250,20 +253,16 @@ function updateAvatar(userId, idAvatar, filePath){
   fs.writeFileSync(filePath, data);
 }
 
-function getUserFromIdItem(idItem, filePath){
-  const fs = require("fs");
-  if (!fs.existsSync(filePath)) return [];
-  let userListRawData = fs.readFileSync(filePath);
-  let userList;
-  let userListContainsItem = JSON.parse(userListRawData); // parse du tableau pour qu'il contient tout les key du fichier json.
-  if (userListRawData) userList = JSON.parse(userListRawData);
-  for(let i = 0; i < userList.length; i++){ // réécriture du json à renvoyer avec les valeurs choisit.
+function getUserFromIdItem(idItem){
+  let userList = getUserListFromFile(FILE_PATH);
+  let list=[];
+  for(let i = 0; i < userList.length; i++){
     for(let itemIndex = 0; itemIndex < userList[i].itemCollections.length; itemIndex++){
-      if(userList[i].itemCollections[itemIndex].contains(idItem)){
-        userListContainsItem.push(userList[i]);
+      if(userList[i].itemCollections[itemIndex].includes(idItem)){
+        list.push(userList[i]);
       }
     }
   }
-  return userListContainsItem;
+  return list;
 }
 module.exports = User;

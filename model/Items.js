@@ -90,16 +90,6 @@ function getUsersList(filePath) {
     return usersList;
 }
 //TODO répétitif ?
-function getItemById(filePath) {
-    const fs = require("fs");
-    if (!fs.existsSync(filePath)) return [];
-    let itemListRawData = fs.readFileSync(filePath);
-    let itemList;
-    if (itemList) itemList = JSON.parse(itemListRawData);
-    else itemList = [];
-    return itemList;
-}
-//TODO répétitif ?
 function getAllItemsList(filePath) {
     const fs = require("fs");
     if (!fs.existsSync(filePath)) return [];

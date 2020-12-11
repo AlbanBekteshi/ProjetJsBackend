@@ -1,36 +1,13 @@
-/*// Socket.io
-const EXPRESS = require('express');
-let myExpressServerApplication = EXPRESS();
-let myHttpExpressServer = require('http').createServer(myExpressServerApplication);
-
-const io = require("socket.io")(myHttpExpressServer, {
-  cors: {
-    origin: "http://localhost", // Client here is localhost:80
-    methods: ["GET", "POST"]
-  }
-});
-
-io.on('connection', socket => {
-  console.log('New Socket Connection');
-  socket.emit("broadcast", "New Socket Client : Welcome !");
-});
-
-myHttpExpressServer.listen(3000, ()  => {
-  console.log('Socket server listening on *:3000');
-});
-*/
-
-//---------------------------------------------------
 const webSocketServer = require("./server.js");
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
-//var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var usersRouter = require("./routes/users");
 var itemsRouter = require("./routes/items");
 var gamesRouter = require("./routes/games");
+var chatsRouter = require('./routes/chats');
 var app = express();
 
 app.use(logger("dev"));
@@ -40,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/items", itemsRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/games", gamesRouter);
+app.use("/api/chats", chatsRouter);
 
 
 

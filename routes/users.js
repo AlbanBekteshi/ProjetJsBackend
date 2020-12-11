@@ -143,34 +143,6 @@ router.post("/item/:idItem/:idUser", function (req, res, next) {
     return res.status(400).send("An error happened");
 });
 
-router.get("/isUsernameAvailible/:username",(req,res,next)=>{
-    let userList = User.getList();
-
-    userList.forEach((user)=>{
-        if(user.username==req.params.username) return res.status(201).send("Username deja utilisé");
-    });
-    return res.status(200).send("Username disponible");
-});
-
-router.get("/isEmailAvailible/:email",(req,res,next)=>{
-    let userList = User.getList();
-    
-    userList.forEach((user)=>{
-        if(user.email==req.params.email){
-            console.log("ok");
-            return res.status(201).send("Email deja utilisé");
-        } 
-    });
-    return res.status(200).send("Email disponible");
-});
-router.post("/chat/:id/:text", authorize, function (req, res, next){
-    return res.json(Chat.addDataJson(req.params.id, req.params.text));
-});
-router.get("/chat", authorize, function (req, res, next){
-    console.log("je passe ici");
-    return res.json(Chat.getData());
-});
-
 router.get("/getUserFromItem/:idItem", (req,res,next)=>{
     console.log(req.params.idItem);
     let userList = User.getUserFromIdItemItem(req.params.idItem);

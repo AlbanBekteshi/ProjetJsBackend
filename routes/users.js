@@ -171,5 +171,12 @@ router.get("/chat", authorize, function (req, res, next){
     return res.json(Chat.getData());
 });
 
+router.get("/getUserFromItem/:idItem", (req,res,next)=>{
+    console.log(req.params.idItem);
+    let userList = User.getUserFromIdItemItem(req.params.idItem);
+    console.log(userList);
+    return res.status(200).send(userList);
+})
+
 
 module.exports = router;

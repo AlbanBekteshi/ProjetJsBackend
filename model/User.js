@@ -256,13 +256,11 @@ function updateAvatar(userId, idAvatar, filePath){
 function getUserFromIdItem(idItem){
   let userList = getUserListFromFile(FILE_PATH);
   let list=[];
-  for(let i = 0; i < userList.length; i++){
-    for(let itemIndex = 0; itemIndex < userList[i].itemCollections.length; itemIndex++){
-      if(userList[i].itemCollections[itemIndex].includes(idItem)){
-        list.push(userList[i]);
-      }
+  userList.forEach((user)=>{
+    for(let index=0;index<user.itemCollections.length;index++){
+      if(user.itemCollections[index]==idItem) list.push(user);
     }
-  }
+  });
   return list;
 }
 module.exports = User;

@@ -164,8 +164,9 @@ router.get("/isEmailAvailible/:email",(req,res,next)=>{
 });
 
 router.get("/getUserFromItem/:idItem", (req,res,next)=>{
+    console.log(req.params.idItem);
     let userList = User.getUserFromIdItemItem(req.params.idItem);
-
+    console.log(userList);
     return res.status(200).send(userList);
 })
 

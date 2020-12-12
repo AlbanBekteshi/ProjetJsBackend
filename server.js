@@ -3,7 +3,6 @@ const webSocketServer = new Server({ port: 8080 });
 
 webSocketServer.on('connection', webSocket => {
   webSocket.on('message', message => {
-    console.log('Received:', message);
     broadcast(message);
   });
 });

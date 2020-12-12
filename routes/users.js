@@ -122,8 +122,6 @@ router.get("/:idUser", authorize, function (req, res, next) {
 router.put("/item/:idItem/:idUser", function (req, res, next) {
     //TODO possible modification pour récupérer le idUser
     const idUser = req.params.idUser;
-    console.log("cest quoi "+idUser);
-    console.log("idUser "+idUser);
     const idItem = req.params.idItem;
     if (User.addItemIntoItemCollection(idItem, idUser))
         return res.status(200).send("oke");
@@ -135,8 +133,6 @@ router.put("/item/:idItem/:idUser", function (req, res, next) {
 router.post("/item/:idItem/:idUser", function (req, res, next) {
     //TODO possible modification pour récupérer le idUser
     const idUser = req.params.idUser;
-    console.log("cest quoi "+idUser);
-    console.log("idUser "+idUser);
     const idItem = req.params.idItem;
     if (User.deleteItemIntoItemCollection(idItem,idUser))
         return res.status(200).send("oke");
@@ -144,9 +140,7 @@ router.post("/item/:idItem/:idUser", function (req, res, next) {
 });
 
 router.get("/getUserFromItem/:idItem", (req,res,next)=>{
-    console.log(req.params.idItem);
     let userList = User.getUserFromIdItemItem(req.params.idItem);
-    console.log(userList);
     return res.status(200).send(userList);
 })
 

@@ -9,7 +9,7 @@ class Game {
     }
 
     /**
-     * Get game list
+     * Appel à la fonction getGame pour récupérer la liste et pour faire le lien avec la route
      */
     static getAllGame() {
         return getGame(GAME_FILE_PATH);
@@ -17,6 +17,11 @@ class Game {
 
 }
 
+/**
+ * Récupération des games
+ * @param filePath
+ * @returns {*[]}
+ */
 function getGame(filePath) {
     const fs = require("fs");
     if (!fs.existsSync(filePath)) {

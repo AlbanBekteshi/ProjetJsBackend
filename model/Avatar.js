@@ -7,6 +7,10 @@ class Avatar {
         this.name = name;
     }
 
+    /**
+     * Récupération de tout les avatars
+     * @returns {[]}
+     */
     static getAllAvatar() {
         return getAvatar(AVATAR_FILE_PATH);
     }

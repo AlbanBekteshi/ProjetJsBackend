@@ -64,11 +64,15 @@ class Items {
        return returnArray;
     }
 
+    /**
+     * Récupération d'un item par son id
+     * @param idItem
+     * @returns {undefined|*}
+     */
     static getItemsById(idItem) {
         const itemList = getAllItemsList(ITEMS_FILE_PATH);
         for (let itemIndex = 0; itemIndex < itemList.length; itemIndex++) {
             if (itemList[itemIndex].itemId == idItem) {
-                console.log(itemList[itemIndex]);
                 return itemList[itemIndex];
                 break;
             }
@@ -77,9 +81,6 @@ class Items {
     }
 }
 
-/**
- get usersList whose contains itemsCollection.
- */
 function getUsersList(filePath) {
     const fs = require("fs");
     if (!fs.existsSync(filePath)) return [];
@@ -89,7 +90,12 @@ function getUsersList(filePath) {
     else usersList = [];
     return usersList;
 }
-//TODO répétitif ?
+
+/**
+ * Récupération de la liste des items
+ * @param filePath
+ * @returns {*[]}
+ */
 function getAllItemsList(filePath) {
     const fs = require("fs");
     if (!fs.existsSync(filePath)) return [];
@@ -100,7 +106,13 @@ function getAllItemsList(filePath) {
     return itemList;
 }
 
-
+/**
+ * Ajout de tout les items pour un utilisateur
+ * @param filePath
+ * @param userId
+ * @param items
+ * @returns {*[]}
+ */
 function addAllItems(filePath, userId, items) {
     const fs = require("fs");
     if (!fs.existsSync(filePath)) return [];

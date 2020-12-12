@@ -60,17 +60,33 @@ class User {
       .catch((err) => err);
   }
 
-
+  /**
+   * Appel à la fonction updateConnectedField pour faire le lien avec le route.
+   * @param itemId
+   * @returns {*[]}
+   */
   static updateConnection(value, userId){
     updateConnectedField(value, userId, FILE_PATH);
   }
+  /**
+   * Appel à la fonction updateAvatar pour faire le lien avec le route.
+   * @param itemId
+   * @returns {*[]}
+   */
   static updateAvatar(avatarId, userId){
     updateAvatar(userId, avatarId, FILE_PATH);
   }
+  /*
+  Récupération de la liste des utilisateurs
+   */
   static getList() {
     return getUserListFromFile(FILE_PATH);
   }
-
+  /**
+   * Appel à la fonction updateProfil pour faire le lien avec le route.
+   * @param itemId
+   * @returns {*[]}
+   */
   static updateProfil(userId, username, email, fName, lName, idAvatar){
     updateProfilById(userId, username, email, fName, lName, idAvatar, FILE_PATH );
   }
@@ -94,6 +110,12 @@ class User {
     return undefined;
   }
 
+  /**
+   * Récupération du user en entier par son username
+   * Code source : Cours JS
+   * @param username
+   * @returns {undefined|*}
+   */
   static getUserFromList(username) {
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {
@@ -102,6 +124,11 @@ class User {
     return undefined;
   }
 
+  /**
+   * Permet de récupérer l'id d'un user grâce à son username.
+   * @param username
+   * @returns {number|*}
+   */
   static getUserId(username){
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {
@@ -109,7 +136,11 @@ class User {
     }
     return -1;
   }
-
+  /**
+   * Code source : Cours de JS
+   * @param itemId
+   * @returns {*[]}
+   */
   static getUserFromListMail(email) {
     const userList = getUserListFromFile(FILE_PATH);
     for (let index = 0; index < userList.length; index++) {
@@ -117,18 +148,45 @@ class User {
     }
     return;
   }
-
+  /**
+   * Appel à la fonction addItemIntoIte pour faire le lien avec le route.
+   * @param itemId
+   * @returns {*[]}
+   */
   static addItemIntoItemCollection(itemId,userId){
     return addItemToCollection(itemId,userId);
   }
+  /**
+   * Appel à la fonction deleteItemToCollection pour faire le lien avec le route.
+   * @param itemId
+   * @returns {*[]}
+   */
   static deleteItemIntoItemCollection(itemId,userId){
     return deleteItemToCollection(itemId,userId);
   }
+
+  /**
+   * Appel à la fonction getUserFromIdItem pour faire le lien avec le route.
+   * @param itemId
+   * @returns {*[]}
+   */
   static  getUserFromIdItemItem(itemId){
     return getUserFromIdItem(itemId);
   }
 
 }
+
+/**
+ * Update le profil de l'utilisateur
+ * @param id
+ * @param username
+ * @param email
+ * @param fName
+ * @param lName
+ * @param idAvatar
+ * @param filePath
+ * @returns {*[]}
+ */
 function updateProfilById(id, username, email, fName, lName, idAvatar, filePath ){
   const fs = require("fs");
   if (!fs.existsSync(filePath)) return [];
@@ -152,6 +210,12 @@ function updateProfilById(id, username, email, fName, lName, idAvatar, filePath 
   fs.writeFileSync(filePath, data);
 
 }
+
+/**
+ * Source : Cours JS
+ * @param filePath
+ * @returns {*[]}
+ */
 function getUserListFromFile(filePath) {
   const fs = require("fs");
   if (!fs.existsSync(filePath)) return [];
@@ -162,11 +226,24 @@ function getUserListFromFile(filePath) {
   return userList;
 }
 
+/**
+ * Source : Cours JS
+ * @param filePath
+ * @param userList
+ */
 function saveUserListToFile(filePath, userList) {
   const fs = require("fs");
   let data = JSON.stringify(userList);
   fs.writeFileSync(filePath, data);
 }
+
+/**
+ * Mise à jour du champs connected pour gérer le statut de connection de l'utilisateur.
+ * @param value
+ * @param userId
+ * @param filePath
+ * @returns {*[]}
+ */
 function updateConnectedField(value, userId, filePath){
   //TODO refactor from getUserListFromFile() ?
   //let userList = getUserListFromFile(filePath);
@@ -201,10 +278,8 @@ function addItemToCollection(itemId,userId){
   for(let i = 0; i < userList.length; i++){
     if(userList[i].idUser == userId ){
       let list = userList[i].itemCollections;
-      console.log("avant",list);
       list.push(parseInt(itemId));
       userList[i].itemCollections = list;
-      console.log("apres",list);
       break;
     }
   }
@@ -213,6 +288,13 @@ function addItemToCollection(itemId,userId){
 
   return true;
 }
+
+/**
+ * Supprime l'item de la collection de l'utilisateur
+ * @param itemId
+ * @param userId
+ * @returns {boolean}
+ */
 function deleteItemToCollection(itemId,userId){
   const fs = require('fs');
   let userList = User.getList();
@@ -234,6 +316,14 @@ function deleteItemToCollection(itemId,userId){
   fs.writeFileSync(FILE_PATH, data);
   return true;
 }
+
+/**
+ * Change l'avatar du personnage
+ * @param userId
+ * @param idAvatar
+ * @param filePath
+ * @returns {*[]}
+ */
 function updateAvatar(userId, idAvatar, filePath){
   const fs = require('fs');
   if (!fs.existsSync(filePath)) return [];
@@ -253,6 +343,11 @@ function updateAvatar(userId, idAvatar, filePath){
   fs.writeFileSync(filePath, data);
 }
 
+/**
+ * Récupère les utilisateurs possédant l'item dans sa collection.
+ * @param idItem
+ * @returns {[]}
+ */
 function getUserFromIdItem(idItem){
   let userList = getUserListFromFile(FILE_PATH);
   let list=[];

@@ -32,7 +32,7 @@ router.post("/login", function (req, res, next) {
                 return res.status(401).send("bad username/password");
             }
         })
-    }
+    }else return res.status(401).send("bad username/password");
 });
 router.post("/updateprofil", function (req, res, next) {
     let idUser = User.getUserId(req.body.username);

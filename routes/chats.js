@@ -8,8 +8,8 @@ router.get("/", authorize, function (req, res, next){
     res.json(Chat.getData());
 });
 
-router.post("/:id/:username/:text/:date", authorize, function (req, res, next){
-    return res.json(Chat.addDataJson(req.params.id, req.params.username,req.params.text, req.params.date));
+router.post("/", authorize, function (req, res, next){
+    return res.json(Chat.addDataJson(req.body.id, req.body.username,req.body.text, req.body.date));
 });
 
 module.exports = router;
